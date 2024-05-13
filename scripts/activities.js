@@ -180,6 +180,38 @@ function listOfActDropDown() {
 
     let matchedActs = getActivitiesInCategory(activities, theCat);
 
+//run the options to the dropdown when chosen
+let defaultOptions = document.createElement("option");
+
+    //set the text content of the option to be "select an Activity"
+    defaultOptions.textContent = "Activities Available";
+
+    // set the value of the option to an empty string("")
+    defaultOptions.value = "";
+
+    //add this default option to the select
+     listOfActs.appendChild(defaultOptions);
+   
+    //get the total number of diffrent activities we have for use in the loop
+    let connectActAndCat = matchedActs.length
+
+    //creating a loop over the categories, its like we have a hold of the list in the array
+    for (let i = 0; i < connectActAndCat; i++) {
+
+        //lets create a new option 
+        let newOption = document.createElement("option");
+
+        //set the textContext for our new option so it shows up on the pg
+        newOption.textContent = activities[i].name
+
+        //set the value for the option
+        newOption.value = activities[i].id
+
+        //add option to the dropdown menu
+        listOfActs.appendChild(newOption);
+    }
+
+
     //console.log(matchedActs)
 
 }
@@ -203,6 +235,13 @@ function getActivitiesInCategory(activities, category) {
 
     //return all the matching menu items
     return matching;
+}
+
+function displayResults(){
+
+
+
+
 }
 
 
