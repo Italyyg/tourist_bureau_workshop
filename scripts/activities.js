@@ -103,4 +103,50 @@ let activities = [
 
 window.onload = function(){
 
+    initDropdown();
+
+    //grabbing the form from the html to use it 
+    let theForm = document.querySelector("#activityForm");
+
+    //when our form is submited then it will run the function attached
+    theForm.addEventListener("submit", displayActivities);
+}
+function displayActivities(event){
+ 
+     //keep the form from reloading the page (when a submit is added)
+     event.preventDefault()
+
+ //get the drop down from the page to work with it
+ let theDropdown = document.querySelector("#activities");
+
+ //get results div from the page to display text
+ let resultParagraph = document.querySelector("#results");
+
+
+ //get the index of the selected option in the dropdown
+ let selectedIndex = theDropdown.selectedIndex-1;
+
+
+
+
+}
+function initDropdown(){
+//get the dropdown from the html document and assign it to the variable
+let theDropdown = document.querySelector("#activities");
+
+// create an HTML optiion element to serve as the deafult optopm for our team select
+let defaultOption = document.createElement("option");
+
+//set the text content of the option to be "selected a team"
+defaultOption.textContent = "Select an Activity";
+
+// set the value of the option to an empty string("")
+ defaultOption.value ="";
+
+ //add this default option to the select
+
+ theDropdown.appendChild(defaultOption);
+
+
+
 }
