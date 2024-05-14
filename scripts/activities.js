@@ -180,9 +180,9 @@ function initDropdown() {
 //function will link the categories to list of activities
 function listOfActDropDown() {
     let listOfActs = document.querySelector("#activity");
-    listOfActs.length=0;
+    listOfActs.length = 0;
     let theCat = document.querySelector("#category").value;
-//debugger
+    //debugger
     let matchedActs = getActivitiesInCategory(activities, theCat);
 
     //run the options to the dropdown when chosen
@@ -243,14 +243,46 @@ function getActivitiesInCategory(activities, category) {
 }
 
 function displayResults() {
+    //the list of actdropdown has to be connected to this one to display the matching
+    let resultsParagraph = document.querySelector("#results");
+    let listOfActs = document.querySelector("#activity");
+    // listOfActs.length = 0;
 
-   // let specificActs = activities.length
+    //get the index of the selected option in the dropdown
+    let selectedIndex = listOfActs.selectedIndex - 1;
 
-   // console.log(specificActs)
+
+    //creating a loop to collect the matching activity in the array
+    //selecting the first dropdown
+    let theCat = document.querySelector("#category");
+    //creating an empty array
+    let matching = []
+    //now we are looping through the activities so it can look through it and find what we are looking for
+    for (let i = 0; i < activities.length; i++) {
+
+        //if the value that is attached to the category matches the category of the activities list
+        if (theCat.value === activities[i].category) {
+            //then push that activity into the empty array
+            matching.push(activities[i]);
+
+
+        }
+
+
+    }
+    //now we are creating a variable to push if the selected option matches the catergory and activity
+    let selectedActi = matching[selectedIndex];
+
+//displaying information on the html page
+    console.log(matching[selectedIndex].description)
+    resultsParagraph.innerHTML = `
+    <div>You chose the category ${selectedActi.category} Id: ${selectedActi.id}</div>
+    <div> The activity chosen was ${selectedActi.name}</div>
+    <div>Description:</div>
+    <div>${matching[selectedIndex].description}</div>
+    <div> Located: ${selectedActi.location}</div>
+    <div> Price : $${selectedActi.price}`
 
 
 }
-
-
-
 
