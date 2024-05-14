@@ -110,12 +110,16 @@ window.onload = function () {
 
     //getting the category from the page to see if it changes
     let cats = document.querySelector("#category");
+    let activity = document.querySelector("#activity")
 
     //when our form is submited then it will run the function attached
     theForm.addEventListener("submit", displayActivities);
 
     //if there is a change in the category subject then it will run the list of act dropdown function
     cats.addEventListener("change", listOfActDropDown);
+
+    //if there is a change to the activity drop down then a result will occur
+    activity.addEventListener("change", displayResults);
 
 
 }
@@ -150,7 +154,7 @@ function initDropdown() {
 
     theDropdown.appendChild(defaultOption);
     // create an HTML option element to serve as the deafult option
-   
+
     //get the total number of diffrent activities we have for use in the loop
     let category = categories.length
 
@@ -176,12 +180,13 @@ function initDropdown() {
 //function will link the categories to list of activities
 function listOfActDropDown() {
     let listOfActs = document.querySelector("#activity");
+    listOfActs.length=0;
     let theCat = document.querySelector("#category").value;
-
+//debugger
     let matchedActs = getActivitiesInCategory(activities, theCat);
 
-//run the options to the dropdown when chosen
-let defaultOptions = document.createElement("option");
+    //run the options to the dropdown when chosen
+    let defaultOptions = document.createElement("option");
 
     //set the text content of the option to be "select an Activity"
     defaultOptions.textContent = "Activities Available";
@@ -190,8 +195,8 @@ let defaultOptions = document.createElement("option");
     defaultOptions.value = "";
 
     //add this default option to the select
-     listOfActs.appendChild(defaultOptions);
-   
+    listOfActs.appendChild(defaultOptions);
+
     //get the total number of diffrent activities we have for use in the loop
     let connectActAndCat = matchedActs.length
 
@@ -202,10 +207,10 @@ let defaultOptions = document.createElement("option");
         let newOption = document.createElement("option");
 
         //set the textContext for our new option so it shows up on the pg
-        newOption.textContent = activities[i].name
+        newOption.textContent = matchedActs[i].name
 
         //set the value for the option
-        newOption.value = activities[i].id
+        newOption.value = matchedActs[i].id
 
         //add option to the dropdown menu
         listOfActs.appendChild(newOption);
@@ -237,9 +242,11 @@ function getActivitiesInCategory(activities, category) {
     return matching;
 }
 
-function displayResults(){
+function displayResults() {
 
+   // let specificActs = activities.length
 
+   // console.log(specificActs)
 
 
 }
